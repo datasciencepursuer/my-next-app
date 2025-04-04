@@ -1,36 +1,39 @@
-'use client';
-
 import Image from 'next/image';
+import MaxWidthWrapper from './MaxWidthWrapper';
+import ScrollNavLink from './ScrollNavLink';
+import Button from './Button';
 
-interface HeroProps {
-  title: string;
-  subtitle: string;
-  imagePath: string;
-}
-
-export default function Hero({ title, subtitle, imagePath }: HeroProps) {
+export default function Hero() {
   return (
-    <div className="relative -mt-16">
-      {/* Background Image */}
+    <section className="relative min-h-screen -mt-18">
       <div className="absolute inset-0 z-0">
         <Image
-          src={imagePath}
-          alt="Hero Background"
+          src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmXQ7Ln51Ol0SVZyrj5JsoTuE2GBDW1kHNF9gc"
+          alt="Hero background"
           fill
-          className="object-cover brightness-50"
+          className="object-cover"
           priority
         />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
-      
-      {/* Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-[80vh] pt-16">
-        <div className="text-center text-gray-200 px-4 w-full sm:w-auto">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 sm:mb-6">{title}</h1>
-          <p className="text-lg sm:text-xl max-w-[90vw] sm:max-w-2xl mx-auto">
-            {subtitle}
+      <div className="relative z-10 flex items-center justify-center min-h-screen">
+        <MaxWidthWrapper className="text-center text-white">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Innovative Technology Solutions
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            Transforming businesses through cutting-edge technology and expert consulting
           </p>
-        </div>
+          <Button>
+          <ScrollNavLink
+            href="/#services"
+            className="inline-block text-white px-8 py-3 rounded-lg text-lg font-medium transition-all hover:scale-105"
+          >
+            Explore Our Services
+          </ScrollNavLink>
+          </Button>
+        </MaxWidthWrapper>
       </div>
-    </div>
+    </section>
   );
 }
