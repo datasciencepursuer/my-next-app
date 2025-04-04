@@ -2,6 +2,7 @@ import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Services />
       <About />
       <Contact />
+      <ScrollToTop />
     </div>
   );
 }
