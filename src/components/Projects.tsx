@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useScrollNavigation } from '@/hooks/useScrollNavigation';
+import Button from './Button';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -133,20 +134,15 @@ export default function Projects() {
                 </div>
 
                 <div className="flex flex-wrap gap-4">
+                  <Button>
                   <Link
                     href="/#contact"
                     onClick={(e) => handleSectionNavigation(e, '/#contact')}
-                    className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transform transition-all duration-300 hover:scale-105"
+                    className="px-6 py-3 text-white rounded-lg transform transition-all duration-300 hover:scale-105"
                   >
                     Schedule Consultation
                   </Link>
-                  <Link
-                    href={`/assets/briefs/${project.id}.pdf`}
-                    target="_blank"
-                    className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transform transition-all duration-300 hover:scale-105"
-                  >
-                    Download Service Brief
-                  </Link>
+                  </Button>
                 </div>
               </div>
             </div>

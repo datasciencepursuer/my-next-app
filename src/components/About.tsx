@@ -12,21 +12,13 @@ export default function About() {
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">About Us</h2>
               <p className="text-lg text-gray-600 mb-6">
-                We combine advanced technical knowledge and innovative solutions to deliver the that help businesses thrive in the digital age.
+                Gao Technology Consulting is a technology consulting firm originating from Markham, Ontario.
+                We combine advanced technical knowledge and innovative solutions to help businesses thrive in the digital and upcoming AI age.
+                Our specialty lies in providing unique solutions tailored specifically to your needs at a low upkeep cost. We are commited to educating 
+                on the latest technologies and trends to ensure that you are always ahead of the curve. Each solution will be presented with a detailed report, 
+                including the pros and cons, to ensure you are fully informed before making any decisions. Post implementation, We will provide supplementary 
+                training and knowledge on the solution to ensure you are fully able to master and scale it yourselves.
               </p>
-              <div className="space-y-4">
-                {[
-                  'Strategic Technology Consulting',
-                  'Custom Solution Development',
-                  'Digital Transformation',
-                  'Innovation & Growth'
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center">
-                    <Check className="w-6 h-6 text-blue-600 mr-3" />
-                    <span className="text-gray-700">{item}</span>
-                  </div>
-                ))}
-              </div>
             </div>
             <div className="relative h-[650px] rounded-lg overflow-hidden">
               <Image
