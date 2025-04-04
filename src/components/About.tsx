@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import MaxWidthWrapper from './MaxWidthWrapper';
-import { Check } from 'lucide-react';
 
 export default function About() {
     return (
