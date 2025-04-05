@@ -1,7 +1,5 @@
-'use client';
-
-import Button from './Button';
 import MaxWidthWrapper from './MaxWidthWrapper';
+import { Mail, Phone } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -12,32 +10,19 @@ export default function Contact() {
           <p className="text-xl text-gray-600 mb-12">
             Ready to transform your business? Let&apos;s discuss how we can help you achieve your goals.
           </p>
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <form className="space-y-6 [transform-style:preserve-3d]">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full text-gray-600 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full text-gray-600 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              <textarea
-                rows={4}
-                placeholder="Message"
-                className="w-full text-gray-600 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <Button
-                className="w-full text-lg font-medium"
-                href="/#contact"
-              >
-                Send Message
-              </Button>
-            </form>
+          <div className="flex flex-col items-center space-y-6">
+            <div className="flex items-center space-x-3">
+              <Mail className="w-6 h-6 text-[#646DD8]" />
+              <a href="mailto:will.gao@gtechnology.ca" className="text-lg text-gray-700 hover:text-blue-600 transition-colors">
+                will.gao@gtechnology.ca
+              </a>
+            </div>
+            <div className="flex items-center space-x-3">
+              <Phone className="w-6 h-6 text-[#646DD8]" />
+              <a href="tel:+16476404186" className="text-lg text-gray-700 hover:text-blue-600 transition-colors">
+                1 (647) 640 4186
+              </a>
+            </div>
           </div>
         </div>
       </MaxWidthWrapper>

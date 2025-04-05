@@ -10,7 +10,7 @@ interface ButtonProps {
 }
 
 export default function Button({ children, onClick, href, className = '' }: ButtonProps) {
-  const baseStyle = 'px-4 py-2 rounded-lg bg-[#646DD8] text-gray-200 hover:bg-[#5158B0] hover:scale-102 active:scale-98 transition-all duration-200 transform';
+  const baseStyle = 'px-4 py-2 rounded-lg bg-[#646DD8] text-gray-200 hover:bg-[#5158B0] hover:scale-105 active:scale-95 transition-all duration-200 transform';
   const finalClassName = `${baseStyle} ${className}`.trim();
 
   if (href) {
