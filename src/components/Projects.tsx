@@ -61,21 +61,23 @@ export default function Projects() {
                     className={`object-cover ${project.adjustments || ''}`}
                   />
                 </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-3">{project.title}</h3>
-                    <svg 
-                      className={`w-6 h-6 text-gray-500 transform transition-transform duration-300 ${
-                        isSelected ? 'rotate-180' : ''
-                      }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
-                    </svg>
+                <div className="p-8 h-[200px] flex flex-col justify-between">
+                  <div>
+                    <div className="flex justify-between items-start gap-4 mb-6">
+                      <h3 className="text-xl font-semibold text-gray-800 line-clamp-2">{project.title}</h3>
+                      <svg
+                        className={`w-6 h-6 text-gray-500 transform transition-transform duration-300 flex-shrink-0 ${
+                          isSelected ? 'rotate-180' : ''
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
+                      </svg>
+                    </div>
+                    <p className="text-gray-600 line-clamp-3">{project.description}</p>
                   </div>
-                  <p className="text-gray-600 line-clamp-2">{project.description}</p>
                 </div>
               </div>
             </div>
