@@ -62,9 +62,9 @@ export default function Projects() {
                   />
                 </div>
                 <div className="p-6">
-                  <div className="flex justify-between items-start h-16">
-                    <h3 className="text-xl font-semibold text-gray-800 line-clamp-2">{project.title}</h3>
-                    <svg
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-3">{project.title}</h3>
+                    <svg 
                       className={`w-6 h-6 text-gray-500 transform transition-transform duration-300 ${
                         isSelected ? 'rotate-180' : ''
                       }`}
@@ -75,7 +75,7 @@ export default function Projects() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </div>
-                  <p className="text-gray-600 h-12 line-clamp-2">{project.description}</p>
+                  <p className="text-gray-600">{project.description}</p>
                 </div>
               </div>
             </div>
