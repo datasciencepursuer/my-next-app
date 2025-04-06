@@ -75,7 +75,7 @@ export default function Projects() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </div>
-                  <p className="text-gray-600">{project.description}</p>
+                  <p className="text-gray-600 line-clamp-2">{project.description}</p>
                 </div>
               </div>
             </div>
