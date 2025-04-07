@@ -20,7 +20,7 @@ export default function Contact() {
       document.head.appendChild(linkPreload);
       
       setPreloaded(true);
-    }, 1000); // Delay preloading by 2 seconds
+    }, .25 * 1000); // 250ms delay
     
     return () => clearTimeout(timer);
   }, []);  
