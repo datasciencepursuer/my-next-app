@@ -108,9 +108,9 @@ export default function Projects() {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold mb-3 text-gray-800">Methodologies</h4>
+                  <h4 className="text-lg font-semibold mb-3 text-gray-800">Products</h4>
                   <div className="flex flex-wrap gap-2">
-                    {serviceDetails.methodologies.map((method, index) => (
+                    {serviceDetails.products.map((method, index) => (
                       <span key={index} className="bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm">
                         {method}
                       </span>

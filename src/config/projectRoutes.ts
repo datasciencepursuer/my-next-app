@@ -6,7 +6,7 @@ export type ServiceStep = {
 export type ServiceDetails = {
   title: string;
   technologies: string[];
-  methodologies: string[];
+  products: string[];
   process: ServiceStep[];
 };
 
@@ -62,20 +62,20 @@ export function getServiceDetails(id: string): ServiceDetails {
   const services: Record<string, ServiceDetails> = {
     'cloud-solutions': {
       title: 'Cloud Solutions & Digital Transformation',
-      technologies: ['AWS', 'Azure', 'GCP', 'Kubernetes', 'Docker', 'Terraform'],
-      methodologies: ['Agile Cloud Migration', 'DevOps', 'Infrastructure as Code'],
+      technologies: ['Microsoft Azure', 'Amazon Web Service', 'Google Cloud Platform'],
+      products: ['Automation', 'Cloud Storage', 'Cloud Computing'],
       process: [
         { step: 'Assessment', description: 'Evaluate infrastructure and migration readiness' },
         { step: 'Strategy', description: 'Create cloud adoption roadmap' },
-        { step: 'Migration', description: 'Execute phased cloud transition' }
+        { step: 'Migration', description: 'Cloud transition' }
       ]
     },
     'custom-development': {
       title: 'Custom Software Development',
-      technologies: ['React', 'Node.js', 'Python', '.NET', 'Flutter'],
-      methodologies: ['Agile', 'TDD', 'Domain-Driven Design'],
+      technologies: ['Python', 'Node.JS', 'React', 'Next JS'],
+      products: ['Web Developement', 'Solutions Discovery', 'Custom Applications & Integrations'],
       process: [
-        { step: 'Analysis', description: 'Gather and analyze requirements' },
+        { step: 'Analysis', description: 'Gathering requirements and solutions discovery' },
         { step: 'Design', description: 'Create technical architecture' },
         { step: 'Development', description: 'Iterative implementation' }
       ]
@@ -83,17 +83,17 @@ export function getServiceDetails(id: string): ServiceDetails {
     'cybersecurity': {
       title: 'Cybersecurity Services',
       technologies: ['SIEM', 'EDR', 'IAM', 'Encryption', 'Pen Testing'],
-      methodologies: ['Zero Trust', 'Defense in Depth', 'NIST Framework'],
+      products: ['Risk Assessment', 'Penetration Testing', 'Incident Response & Forensics', 'Cybersecurity Training'],
       process: [
-        { step: 'Assessment', description: 'Security posture evaluation' },
-        { step: 'Strategy', description: 'Security roadmap development' },
+        { step: 'Assessment', description: 'Security evaluation' },
+        { step: 'Strategy', description: 'Security improvement roadmap' },
         { step: 'Implementation', description: 'Deploy security controls' }
       ]
     },
     'data-analytics': {
       title: 'Data Analytics & BI',
-      technologies: ['Snowflake', 'Spark', 'TensorFlow', 'Power BI', 'Tableau'],
-      methodologies: ['Data Lake', 'ETL', 'MLOps'],
+      technologies: ['SQL', 'NoSQL', 'Power BI', 'Tableau','JQL'],
+      products: ['Custom Reports','ETL','Data Cleaning','Data Infrastructure Setup','Statistical Analysis & Modeling'],
       process: [
         { step: 'Analysis', description: 'Data source evaluation' },
         { step: 'Pipeline', description: 'Build data infrastructure' },
