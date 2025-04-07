@@ -1,7 +1,29 @@
 import MaxWidthWrapper from './MaxWidthWrapper';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function Contact() {
+  // State to track if preloading has completed
+  const [preloaded, setPreloaded] = useState(false);
+  
+  useEffect(() => {
+    // Set a timeout to give priority to more important page content
+    const timer = setTimeout(() => {
+      const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11511.558704464115!2d-79.31371799999999!3d43.869142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d4e8f2b5e473%3A0x3b0321b47c5be71c!2sUnionville%2C%20Markham%2C%20ON!5e0!3m2!1sen!2sca!4v1680901234567!5m2!1sen!2sca";
+      
+      // Create a link preload element
+      const linkPreload = document.createElement('link');
+      linkPreload.rel = 'preload';
+      linkPreload.href = mapUrl;
+      linkPreload.as = 'document';
+      document.head.appendChild(linkPreload);
+      
+      setPreloaded(true);
+    }, 1000); // Delay preloading by 2 seconds
+    
+    return () => clearTimeout(timer);
+  }, []);  
+
   return (
     <section id="contact" className="bg-gray-50 py-32">
       <MaxWidthWrapper>
