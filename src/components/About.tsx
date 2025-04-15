@@ -19,7 +19,7 @@ export default function About() {
                 training and knowledge on the solution to ensure you are fully able to master and scale it yourselves.
               </p>
             </div>
-            <div className="relative h-[650px] rounded-lg overflow-hidden">
+            <div className="relative aspect-[10/10] lg:h-[650px] rounded-lg overflow-hidden">
               <Image
                 src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmZ7nF6LDkjNoaeX9tbkUu805VLmwGsYF3y2J1"
                 alt="About us"
@@ -31,4 +31,4 @@ export default function About() {
         </MaxWidthWrapper>
       </section>
     );
-  }
+}
