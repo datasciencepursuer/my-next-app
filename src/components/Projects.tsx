@@ -83,71 +83,83 @@ export default function Projects() {
             </div>
 
             {/* Expanded Content */}
-            <div
-              className={`bg-white shadow-lg transition-all duration-300 overflow-hidden ${
-                isSelected ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
-              }`}
-              style={{
-                borderTopLeftRadius: '0',
-                borderTopRightRadius: '0',
-                borderBottomLeftRadius: '0.5rem',
-                borderBottomRightRadius: '0.5rem',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-              }}
-            >
-              <div className="p-6 space-y-6">
-                <div>
-                  <h4 className="text-lg font-semibold mb-3 text-gray-800">Technologies</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {serviceDetails.technologies.map((tech, index) => (
-                      <span key={index} className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm">
-                        {tech}
-                      </span>
-                    ))}
+            {isSelected && (
+              <div
+                className={`bg-white shadow-lg transition-all duration-300 overflow-hidden ${
+                  isSelected ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+                }`}
+                style={{
+                  borderTopLeftRadius: '0',
+                  borderTopRightRadius: '0',
+                  borderBottomLeftRadius: '0.5rem',
+                  borderBottomRightRadius: '0.5rem',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                }}
+              >
+                <div className="p-6 space-y-6">
+                  <div>
+                    <h4 className="text-lg font-semibold mb-3 text-gray-800">Technologies</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {serviceDetails.technologies.map((tech, index) => (
+                        <span key={index} className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <div>
-                  <h4 className="text-lg font-semibold mb-3 text-gray-800">Products</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {serviceDetails.products.map((method, index) => (
-                      <span key={index} className="bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm">
-                        {method}
-                      </span>
-                    ))}
+                  <div>
+                    <h4 className="text-lg font-semibold mb-3 text-gray-800">Products</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {serviceDetails.products.map((method, index) => (
+                        <span key={index} className="bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm">
+                          {method}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <div className="bg-gray-50 rounded-lg p-6">
-                  <h4 className="text-lg font-semibold mb-4 text-gray-800">Implementation Process</h4>
-                  <div className="space-y-4">
-                    {serviceDetails.process.map((step, index) => (
-                      <div key={index} className="flex items-start">
-                        <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold">
-                          {index + 1}
+                  <div className="bg-gray-50 rounded-lg p-6">
+                    <h4 className="text-lg font-semibold mb-4 text-gray-800">Implementation Process</h4>
+                    <div className="space-y-4">
+                      {serviceDetails.process.map((step, index) => (
+                        <div key={index} className="flex items-start">
+                          <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold">
+                            {index + 1}
+                          </div>
+                          <div className="ml-4">
+                            <h5 className="font-medium text-gray-800">{step.step}</h5>
+                            <p className="text-gray-600 text-sm mt-1">{step.description}</p>
+                          </div>
                         </div>
-                        <div className="ml-4">
-                          <h5 className="font-medium text-gray-800">{step.step}</h5>
-                          <p className="text-gray-600 text-sm mt-1">{step.description}</p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-4">
+                    <Button>
+                      <Link
+                        href="/#contact"
+                        onClick={(e) => handleSectionNavigation(e, '/#contact')}
+                        className="px-6 py-3 text-white rounded-lg transform transition-all duration-300 hover:scale-105"
+                      >
+                        Schedule Consultation
+                      </Link>
+                    </Button>
+                    <Button>
+                      <Link
+                        href={`/services/${project.id}`}
+                        className="px-6 py-3 text-white rounded-lg transform transition-all duration-300 hover:scale-105"
+                      >
+                        View Previous Works
+                      </Link>
+                    </Button>
                   </div>
                 </div>
-
-                <div className="flex flex-wrap gap-4">
-                  <Button>
-                  <Link
-                    href="/#contact"
-                    onClick={(e) => handleSectionNavigation(e, '/#contact')}
-                    className="px-6 py-3 text-white rounded-lg transform transition-all duration-300 hover:scale-105"
-                  >
-                    Schedule Consultation
-                  </Link>
-                  </Button>
+                <div className="mt-6 flex justify-end">
                 </div>
               </div>
-            </div>
+            )}
           </div>
         );
       })}

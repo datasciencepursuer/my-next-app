@@ -61,16 +61,21 @@ export const useScrollNavigation = () => {
   }, [pathname]);
 
   const handleSectionNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    
-    // Extract hash or use empty string for home
-    const hash = href.startsWith('/#') ? href.replace('/', '') : '';
-    scrollToElement(hash);
-    
-    // Update URL without triggering navigation
-    if (window.history && window.history.pushState) {
-      window.history.pushState(null, '', href);
+    const isHome = pathname === '/';
+    const isHashLink = href.startsWith('/#') || href === '/';
+
+    // Only intercept navigation if already on home and using a hash link
+    if (isHome && isHashLink) {
+      e.preventDefault();
+      const hash = href.startsWith('/#') ? href.replace('/', '') : '';
+      scrollToElement(hash);
+
+      // Update URL without triggering navigation
+      if (window.history && window.history.pushState) {
+        window.history.pushState(null, '', href);
+      }
     }
+    // Otherwise, allow default navigation (let Next.js handle it)
   };
 
   return { handleSectionNavigation };
