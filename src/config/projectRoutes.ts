@@ -37,7 +37,7 @@ export const projects: Project[] = [
     adjustments:"object-center"
   },
   {
-    id: 'cybersecurity',
+    id: 'cyber-security',
     title: "Cybersecurity Services",
     description: "Protect your digital assets with comprehensive security solutions and proactive threat management.",
     image: "https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmglWmBZUQk4VeBypsFOxH7dPYcWo6mXru9wiE",
