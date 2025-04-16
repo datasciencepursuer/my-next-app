@@ -146,6 +146,7 @@ export default function Projects() {
                         Schedule Consultation
                       </Link>
                     </Button>
+                    {/*
                     <Button>
                       <Link
                         href={`/services/${project.id}`}
@@ -154,6 +155,7 @@ export default function Projects() {
                         View Previous Works
                       </Link>
                     </Button>
+                    */}
                   </div>
                 </div>
                 <div className="mt-6 flex justify-end">
