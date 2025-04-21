@@ -1,7 +1,12 @@
+'use client'
+
 import MaxWidthWrapper from './MaxWidthWrapper';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [mapLoaded, setMapLoaded] = useState(false);
+
   return (
     <section id="contact" className="bg-gray-50 py-32">
       <MaxWidthWrapper>
@@ -30,7 +35,12 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          <div className="w-full rounded-lg overflow-hidden shadow-lg">
+          <div className="w-full rounded-lg overflow-hidden shadow-lg relative min-h-[450px]">
+            {!mapLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+                <span className="animate-pulse text-gray-400 text-lg">Loading map…</span>
+              </div>
+            )}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92163.90112851971!2d-79.37549435644034!3d43.87235675435155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d31c27a9fb93%3A0x8b4f7bdba03e4974!2sMarkham%2C%20ON!5e0!3m2!1sen!2sca!4v1680901234567!5m2!1sen!2sca"
               width="100%"
@@ -40,6 +50,7 @@ export default function Contact() {
               loading="eager"
               referrerPolicy="no-referrer-when-downgrade"
               title="Google Maps - Markham Location"
+              onLoad={() => setMapLoaded(true)}
             />
           </div>
         </div>
