@@ -21,54 +21,10 @@ export default function ContactCard() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  async function verifyRecaptcha(): Promise<boolean> {
-    if (!executeRecaptcha) {
-      console.warn('reCAPTCHA not functional: executeRecaptcha is not available.');
-      setStatus('reCAPTCHA setup error. Please try again later.');
-      return false;
-    }
-
-    const recaptchaToken = await executeRecaptcha('contact_form_submit');
-    if (!recaptchaToken) {
-      console.warn('reCAPTCHA token generation failed.');
-      setStatus('Could not get reCAPTCHA token. Please try again.');
-      return false;
-    }
-
-    try {
-      const response = await fetch('/api/googsrecaptcha', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token: recaptchaToken }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok || !result.success) {
-        console.warn('reCAPTCHA verification failed on server:', result.message, result.details?.['error-codes']);
-        setStatus(`reCAPTCHA verification failed: ${result.message || 'Unknown error'}`);
-        return false;
-      }
-      console.log('reCAPTCHA verified successfully by server.');
-      return true;
-    } catch (error) {
-      console.error('Error during reCAPTCHA server verification:', error);
-      setStatus('Error verifying reCAPTCHA. Please try again.');
-      return false;
-    }
-  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    setStatus('Verifying you are human...');
-
-    const isHuman = await verifyRecaptcha();
-    if (!isHuman) {
-      setIsLoading(false);
-      return;
-    }
-
     setStatus('Sending your message...');
 
     try {
