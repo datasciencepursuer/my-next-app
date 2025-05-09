@@ -21,8 +21,8 @@ export default function About() {
             </p>
           </div>
 
-          {/* Image Content */}
-          <div className="relative w-full h-full lg:h-[650px] rounded-lg overflow-hidden">
+          {/* Image Content - Fixed height for mobile and responsive height for larger screens */}
+          <div className="relative h-[350px] min-h-[350px] md:h-[600px] lg:h-[650px] w-full rounded-lg overflow-hidden shadow-lg">
             <Image
               src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmZ7nF6LDkjNoaeX9tbkUu805VLmwGsYF3y2J1"
               alt="About us"
