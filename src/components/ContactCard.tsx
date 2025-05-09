@@ -1,10 +1,8 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export default function ContactCard() {
-  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

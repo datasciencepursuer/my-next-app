@@ -39,8 +39,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Missing required fields.' }, { status: 400 });
     }
 
+    // Email validation using regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ message: 'Invalid email format.' }, { status: 400 });
+    }
+
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>', // Replace Acme with your app name, ensure domain is verified with Resend
+      from: 'Gtechnology <leads@gtechnology.ca>', // Replace Acme with your app name, ensure domain is verified with Resend
       to: [yourReceivingEmail],
       subject: `New Form Submission from ${firstName} ${lastName}`,
       html: `
@@ -63,14 +69,19 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ message: 'Email sent successfully!', data }, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     if (process.env.NODE_ENV === 'development') {
+if (error instanceof Error) {
       console.error('Server error:', error.message);
+} else {
+        console.error('Unknown server error:', error);
+      }
     }
     // Check if it's a JSON parsing error
     if (error instanceof SyntaxError && error.message.includes('JSON')) {
         return NextResponse.json({ message: 'Invalid JSON payload.' }, { status: 400 });
     }
+
     return NextResponse.json({ message: 'Internal Server Error.' }, { status: 500 });
   }
 }
