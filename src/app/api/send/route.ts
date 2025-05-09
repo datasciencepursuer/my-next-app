@@ -11,7 +11,7 @@ if (!yourReceivingEmail) {
 }
 
 const rateLimitMap = new Map<string, { count: number; lastRequest: number }>();
-const RATE_LIMIT_WINDOW = .5 * 60 * 1000; // .5 minutes 30 seconds
+const RATE_LIMIT_WINDOW = .75 * 60 * 1000; // .75 minutes 45 seconds
 const MAX_REQUESTS = 2;
 
 export async function POST(req: NextRequest) {
