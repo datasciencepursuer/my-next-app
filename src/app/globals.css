@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Calibri, Helvetica, sans-serif;
 }
+
+/* Minimize reCAPTCHA badge and expand on hover */
+.grecaptcha-badge {
+  width: 70px !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  left: 4px !important;
+}
+
+.grecaptcha-badge:hover {
+  width: 256px !important;
+}
