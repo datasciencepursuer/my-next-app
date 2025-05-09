@@ -24,6 +24,8 @@ body {
   overflow: hidden !important;
   transition: all 0.3s ease !important;
   left: 4px !important;
+  z-index: 9999 !important; /* Ensures it is above all other components */
+  position: relative; /* Ensures z-index works */
 }
 
 .grecaptcha-badge:hover {
