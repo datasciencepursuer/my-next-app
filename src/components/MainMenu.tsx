@@ -53,13 +53,13 @@ export default function MainMenu() {
   return (
     <nav className="relative">
       {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center space-x-6">
+      <div className="hidden md:flex items-center space-x-8">
         {menuItems.map((item) => (
           <ScrollNavLink
             key={item.id}
             href={item.href}
-            className={`text-gray-200 hover:text-white transition-colors ${
-              activeSection === item.id ? 'font-medium' : ''
+            className={`text-lg text-gray-200 hover:text-white hover:scale-105 transition-colors ${
+              activeSection === item.id ? 'font-semibold' : ''
             }`}
           >
             {item.label}
@@ -70,22 +70,22 @@ export default function MainMenu() {
       {/* Mobile Navigation */}
       <div className="md:hidden">
         <button
-          className="flex items-center justify-center p-2 hover:bg-white/10 rounded-full transition-colors"
+          className="flex items-center justify-center p-3 rounded-full transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Main Menu"
         >
-          <Menu className="text-gray-200 h-6 w-6 block" />
+          <Menu className="text-gray-200 h-8 w-8 block" />
         </button>
 
         {/* Mobile Dropdown Menu */}
         {isOpen && (
-          <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 z-[60]">
+          <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg py-3 z-[60]">
             {menuItems.map((item) => (
               <ScrollNavLink
                 key={item.id}
                 href={item.href}
-                className={`block w-full text-left px-6 py-3 hover:bg-gray-100 transition-colors ${
-                  activeSection === item.id ? 'text-blue-600 font-medium' : 'text-gray-700'
+                className={`block w-full text-left px-8 py-4 text-lg transition-colors ${
+                  activeSection === item.id ? 'text-blue-600 font-semibold' : 'text-gray-700'
                 }`}
                 onClick={handleMenuClick}
               >
