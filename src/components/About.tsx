@@ -5,7 +5,7 @@ import MaxWidthWrapper from './MaxWidthWrapper';
 
 export default function About() {
   return (
-    <section id="about" className="bg-white py-32">
+    <section id="about" className="bg-white py-12 md:py-32">
       <MaxWidthWrapper>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}

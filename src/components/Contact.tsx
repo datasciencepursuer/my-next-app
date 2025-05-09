@@ -6,7 +6,7 @@ import ContactCard from './ContactCard';
 
 export default function Contact() {
   return (
-    <section id="contact" className="bg-gray-50 py-32">
+    <section id="contact" className="bg-gray-50 py-12 md:py-32">
       <MaxWidthWrapper>
         {/* Text content wrapper - centered with its own max-width for readability */}
         <div className="text-center mb-16 max-w-4xl mx-auto">
