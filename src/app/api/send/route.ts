@@ -10,7 +10,28 @@ if (!yourReceivingEmail) {
   // Optionally, you could prevent the app from starting or return an error for all requests
 }
 
+const rateLimitMap = new Map<string, { count: number; lastRequest: number }>();
+const RATE_LIMIT_WINDOW = .5 * 60 * 1000; // .5 minutes 30 seconds
+const MAX_REQUESTS = 2;
+
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get('x-forwarded-for') || 'unknown';
+  const now = Date.now();
+
+  const rateLimitData = rateLimitMap.get(ip) || { count: 0, lastRequest: now };
+  if (now - rateLimitData.lastRequest > RATE_LIMIT_WINDOW) {
+    rateLimitData.count = 0; // Reset count after window
+  }
+
+  rateLimitData.count++;
+  rateLimitData.lastRequest = now;
+
+  if (rateLimitData.count > MAX_REQUESTS) {
+    return NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
+  }
+
+  rateLimitMap.set(ip, rateLimitData);
+
   if (!yourReceivingEmail) {
     // Handle case where env var might not be set during runtime if not caught at startup
     console.error('RECEIVING_EMAIL not configured for POST request.');
