@@ -37,7 +37,7 @@ export default function Header() {
                 src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmIdEfDAlZ7vKmQRMkr3lHeyLDOGX1njxAzVW2"
                 alt="GTC Logo"
                 fill
-                sizes="(max-width: 768px) 100vw, 200px"
+                sizes="(max-width: 768px) 80vw, 200px"
                 className="object-contain object-left"
                 priority
               />
