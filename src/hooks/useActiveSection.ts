@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export const useActiveSection = (sections: string[], headerOffset: number = 96) => {
+export const useActiveSection = (sections: string[]) => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
@@ -24,6 +24,8 @@ export const useActiveSection = (sections: string[], headerOffset: number = 96) 
           if (!element) return;
           
           const rect = element.getBoundingClientRect();
+          // Responsive header offset: 0 for desktop, 50 for mobile
+          const headerOffset = window.innerWidth >= 768 ? 0 : 50;
           if (rect.top <= headerOffset) {
             currentSection = sections[index];
           }
@@ -46,7 +48,7 @@ export const useActiveSection = (sections: string[], headerOffset: number = 96) 
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [sections, headerOffset]);
+  }, [sections]);
 
   return activeSection;
 };

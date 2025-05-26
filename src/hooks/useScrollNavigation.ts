@@ -8,7 +8,8 @@ export const useScrollNavigation = () => {
   const pathname = usePathname();
 
   const scrollToElement = (hash: string) => {
-    const headerOffset = 0; // Fixed header height
+    // Responsive header offset: 0 for desktop, 50 for mobile
+    const headerOffset = window.innerWidth >= 768 ? 0 : 50;
     
     // Determine target position
     let targetPosition = 0; // Default to top for home/overview
