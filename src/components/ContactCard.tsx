@@ -126,7 +126,7 @@ export default function ContactCard() {
         <div className="mt-4">
           <button
             type="submit"
-            className="w-full px-4 py-2 rounded-lg bg-[#646DD8] text-gray-200 hover:bg-[#5158B0] active:scale-95 transition-all duration-200 transform disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-4 py-2 rounded-lg bg-[#646DD8] text-gray-200 hover:bg-[#5158B0] hover:scale-105 active:scale-95 transition-all duration-200 transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isLoading}
           >
             {status || (isLoading ? 'Processing...' : 'Send Message')}
