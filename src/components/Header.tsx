@@ -29,8 +29,10 @@ export default function Header() {
                 alt="GTC Logo"
                 fill
                 sizes="(max-width: 768px) 80vw, 200px"
-                className="object-contain object-left"
+                className="object-contain object-left select-none"
                 priority
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
               />
             </Link>
           </div>
