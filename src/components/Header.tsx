@@ -4,21 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import MainMenu from './MainMenu';
 import MaxWidthWrapper from './MaxWidthWrapper';
-import { useEffect, useState } from 'react';
 import { useScrollNavigation } from '@/hooks/useScrollNavigation';
+import { useScrollObserver } from '@/hooks/useScrollObserver';
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const { handleSectionNavigation } = useScrollNavigation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { isScrolled } = useScrollObserver(10);
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${

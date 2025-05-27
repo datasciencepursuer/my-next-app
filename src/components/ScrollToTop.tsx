@@ -1,64 +1,22 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
+import { smoothScrollTo } from '@/utils/scrollAnimation';
+import { useScrollObserver } from '@/hooks/useScrollObserver';
 
 export default function ScrollToTop() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener('scroll', toggleVisibility);
-
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
-    };
-  }, []);
+  const { scrollY } = useScrollObserver(300);
+  const isVisible = scrollY > 300;
 
   const scrollToTop = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     
-    const duration = 1000; // 1 second duration
-    const start = window.scrollY;
-    const targetPosition = 0;
-    const distance = targetPosition - start;
-    let startTime: number | null = null;
-
-    // Easing function for smoother animation
-    const ease = (t: number) => {
-      return t < 0.5
-        ? 4 * t * t * t
-        : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-    };
-
-    const animation = (currentTime: number) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-
-      window.scrollTo({
-        top: start + (distance * ease(progress)),
-        behavior: 'auto' // We're handling the smooth scroll manually
-      });
-
-      if (progress < 1) {
-        requestAnimationFrame(animation);
+    smoothScrollTo(0, 1000, () => {
+      // Update URL without triggering navigation
+      if (window.history && window.history.pushState) {
+        window.history.pushState(null, '', '/');
       }
-    };
-
-    requestAnimationFrame(animation);
-
-    // Update URL without triggering navigation
-    if (window.history && window.history.pushState) {
-      window.history.pushState(null, '', '/');
-    }
+    });
   };
 
   return (

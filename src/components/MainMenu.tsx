@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import ScrollNavLink from '@/components/ScrollNavLink';
+import { useActiveSection } from '@/hooks/useActiveSection';
 
 const menuItems = [
   { id: 'home', label: 'Overview', href: '/' },
@@ -13,38 +14,8 @@ const menuItems = [
 
 export default function MainMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = menuItems.map(item => item.id);
-      const sectionElements = sections.map(id => 
-        id === 'home' ? document.documentElement : document.getElementById(id)
-      );
-
-      let currentSection = 'home';
-      
-      // Check if we're at the top for home section
-      if (window.scrollY < 100) {
-        currentSection = 'home';
-      } else {
-        // Check other sections
-        sectionElements.forEach((element, index) => {
-          if (!element) return;
-          
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 96) {
-            currentSection = sections[index];
-          }
-        });
-      }
-
-      setActiveSection(currentSection);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const sections = menuItems.map(item => item.id);
+  const activeSection = useActiveSection(sections);
 
   const handleMenuClick = () => {
     setIsOpen(false);

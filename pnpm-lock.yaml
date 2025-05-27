@@ -26,6 +26,9 @@ importers:
       react-google-recaptcha-v3:
         specifier: ^1.10.1
         version: 1.10.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      recaptcha-v3:
+        specifier: ^1.11.3
+        version: 1.11.3
       resend:
         specifier: ^4.5.1
         version: 4.5.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1533,6 +1536,9 @@ packages:
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
+
+  recaptcha-v3@1.11.3:
+    resolution: {integrity: sha512-sEE6J0RzUkS+sKEBpgCD/AqCU0ffrAVOADGjvAx9vcttN+VLK42SWMkj/J/I6vHu3Kew+xcfbBqDVb65N0QGDw==}
 
   reflect.getprototypeof@1.0.10:
     resolution: {integrity: sha512-00o4I+DVrefhv+nX0ulyi3biSHCPDe+yLv5o/p6d/UVlirijB8E16FtfwSAi4g3tcqrQ4lRAqQSoFEZJehYEcw==}
@@ -3392,6 +3398,8 @@ snapshots:
       fast-deep-equal: 2.0.1
 
   react@19.1.0: {}
+
+  recaptcha-v3@1.11.3: {}
 
   reflect.getprototypeof@1.0.10:
     dependencies:
