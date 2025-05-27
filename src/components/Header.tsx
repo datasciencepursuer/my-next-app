@@ -23,6 +23,7 @@ export default function Header() {
               href="/"
               onClick={(e) => handleSectionNavigation(e, '/')}
               className="relative w-[180px] h-25 block transition-transform hover:scale-105"
+              style={{ WebkitUserSelect: 'none', msUserSelect: 'none', userSelect: 'none' }}
             >
               <Image
                 src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmIdEfDAlZ7vKmQRMkr3lHeyLDOGX1njxAzVW2"
@@ -33,6 +34,7 @@ export default function Header() {
                 priority
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
+                style={{ WebkitTouchCallout: 'none' }}
               />
             </Link>
           </div>
