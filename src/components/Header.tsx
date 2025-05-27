@@ -26,7 +26,7 @@ export default function Header() {
               style={{ WebkitUserSelect: 'none', msUserSelect: 'none', userSelect: 'none' }}
             >
               <Image
-                src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmIdEfDAlZ7vKmQRMkr3lHeyLDOGX1njxAzVW2"
+                src="/headerlogowhite.svg"
                 alt="GTC Logo"
                 fill
                 sizes="(max-width: 768px) 80vw, 200px"
