@@ -1,3 +1,7 @@
+import { metadata } from './metadata'
+
+export { metadata }
+
 export default function CloudSolutionsWorks() {
   return (
     <main className="max-w-3xl mx-auto py-16">

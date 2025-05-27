@@ -1,0 +1,15 @@
+# Robots.txt for GTC Technology Consulting
+# https://www.robotstxt.org/robotstxt.html
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow API routes from crawling
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Crawl delay (optional - uncomment if needed)
+# Crawl-delay: 1
