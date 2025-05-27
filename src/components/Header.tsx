@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import MainMenu from './MainMenu';
 import MaxWidthWrapper from './MaxWidthWrapper';
@@ -22,20 +21,18 @@ export default function Header() {
             <Link 
               href="/"
               onClick={(e) => handleSectionNavigation(e, '/')}
-              className="relative w-[180px] h-25 block transition-transform hover:scale-105"
-              style={{ WebkitUserSelect: 'none', msUserSelect: 'none', userSelect: 'none' }}
+              className="block w-[180px] h-[60px] transition-transform hover:scale-105"
+              style={{ 
+                WebkitUserSelect: 'none', 
+                msUserSelect: 'none', 
+                userSelect: 'none',
+                backgroundImage: 'url(https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmIdEfDAlZ7vKmQRMkr3lHeyLDOGX1njxAzVW2)',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'left center',
+                backgroundSize: 'contain'
+              }}
+              aria-label="GTC Logo"
             >
-              <Image
-                src="/headerlogowhite.svg"
-                alt="GTC Logo"
-                fill
-                sizes="(max-width: 768px) 80vw, 200px"
-                className="object-contain object-left select-none"
-                priority
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
-                style={{ WebkitTouchCallout: 'none' }}
-              />
             </Link>
           </div>
 
