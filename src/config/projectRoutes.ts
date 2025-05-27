@@ -41,7 +41,7 @@ export const projects: Project[] = [
     title: "Cybersecurity Services",
     description: "Protect your digital assets with comprehensive security solutions and proactive threat management.",
     image: "https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmglWmBZUQk4VeBypsFOxH7dPYcWo6mXru9wiE",
-    path: "/our-work/cybersecurity", 
+    path: "/our-work/cyber-security", 
     adjustments:"object-center"
   },
   {
@@ -80,7 +80,7 @@ export function getServiceDetails(id: string): ServiceDetails {
         { step: 'Development', description: 'Iterative implementation' }
       ]
     },
-    'cybersecurity': {
+    'cyber-security': {
       title: 'Cybersecurity Services',
       technologies: ['SIEM', 'EDR', 'IAM', 'Encryption', 'Pen Testing'],
       products: ['Risk Assessment', 'Penetration Testing', 'Incident Response & Forensics', 'Cybersecurity Training'],
