@@ -4,8 +4,8 @@ export default function StructuredData() {
     "@type": "Organization",
     "name": "GTC Technology Consulting",
     "description": "Technology consulting firm providing cloud solutions, custom software development, cybersecurity services, and data analytics.",
-    "url": "https://yourdomain.com",
-    "logo": "https://yourdomain.com/logo.png",
+    "url": "https://gtechnology.ca",
+    "logo": "https://gtechnology.ca/logo.png",
     "sameAs": [
       // Add your social media URLs here
       // "https://www.linkedin.com/company/gtc-technology",
@@ -19,7 +19,7 @@ export default function StructuredData() {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
-      "email": "contact@yourdomain.com",
+      "email": "contact@gtechnology.ca",
       "availableLanguage": "English"
     },
     "hasOfferCatalog": {

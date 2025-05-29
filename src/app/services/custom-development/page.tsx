@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Custom Software Development | GTC',
     description: 'Build tailored software solutions that perfectly align with your business needs and enhance operational efficiency.',
-    url: 'https://yourdomain.com/services/custom-development',
+    url: 'https://gtechnology.ca/services/custom-development',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://yourdomain.com/services/custom-development',
+    canonical: 'https://gtechnology.ca/services/custom-development',
   },
 }
 

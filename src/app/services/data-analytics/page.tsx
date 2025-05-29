@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Data Analytics & Business Intelligence | GTC',
     description: 'Transform your data into actionable insights with advanced analytics and business intelligence solutions.',
-    url: 'https://yourdomain.com/services/data-analytics',
+    url: 'https://gtechnology.ca/services/data-analytics',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://yourdomain.com/services/data-analytics',
+    canonical: 'https://gtechnology.ca/services/data-analytics',
   },
 }
 

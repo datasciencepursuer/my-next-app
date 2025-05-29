@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import MaxWidthWrapper from './MaxWidthWrapper';
 import ScrollNavLink from './ScrollNavLink';
 import Button from './Button';
@@ -6,14 +5,16 @@ import Button from './Button';
 export default function Hero() {
   return (
     <section className="relative min-h-screen -mt-18">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmXQ7Ln51Ol0SVZyrj5JsoTuE2GBDW1kHNF9gc"
-          alt="Hero background"
-          fill
-          className="object-cover"
-          priority
-        />
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmXQ7Ln51Ol0SVZyrj5JsoTuE2GBDW1kHNF9gc)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+        aria-label="Hero background"
+      >
         <div className="absolute inset-0 bg-black/50" />
       </div>
       <div className="relative z-10 flex items-center justify-center min-h-screen">

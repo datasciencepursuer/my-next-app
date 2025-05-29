@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "GTC | Technology Consulting",
     description: "Discover innovative solutions and creative experiences with GTC Technology Consulting. We provide cloud solutions, custom software development, cybersecurity services, and data analytics.",
-    url: "https://yourdomain.com",
+    url: "https://gtechnology.ca",
     siteName: "GTC Technology Consulting",
     locale: "en_US",
     type: "website",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://yourdomain.com",
+    canonical: "https://gtechnology.ca",
   },
 };
 

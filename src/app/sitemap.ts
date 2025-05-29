@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { projects } from '@/config/projectRoutes'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://yourdomain.com' // TODO: Replace with actual domain
+  const baseUrl = 'https://gtechnology.ca'
   
   // Get current date for lastModified
   const currentDate = new Date()

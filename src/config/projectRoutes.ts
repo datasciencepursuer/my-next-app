@@ -62,12 +62,12 @@ export function getServiceDetails(id: string): ServiceDetails {
   const services: Record<string, ServiceDetails> = {
     'cloud-solutions': {
       title: 'Cloud Solutions & Digital Transformation',
-      technologies: ['Microsoft Azure', 'Amazon Web Service', 'Google Cloud Platform'],
-      products: ['Automation', 'Cloud Storage', 'Cloud Computing'],
+      technologies: ['n8n','Microsoft Azure', 'Amazon Web Service', 'Google Cloud Platform'],
+      products: ['Automation and AI Agent', 'Cloud Storage', 'Cloud Computing'],
       process: [
-        { step: 'Assessment', description: 'Evaluate infrastructure and migration readiness' },
-        { step: 'Strategy', description: 'Create cloud adoption roadmap' },
-        { step: 'Migration', description: 'Cloud transition' }
+        { step: 'Assessment', description: 'Evaluate infrastructure and migration requirements' },
+        { step: 'Strategy', description: 'Create migration plan' },
+        { step: 'Migration', description: 'Migrate to cloud' }
       ]
     },
     'custom-development': {
@@ -75,8 +75,8 @@ export function getServiceDetails(id: string): ServiceDetails {
       technologies: ['Python', 'Node.JS', 'React', 'Next JS'],
       products: ['Web Developement', 'Solutions Discovery', 'Custom Applications & Integrations'],
       process: [
-        { step: 'Analysis', description: 'Gathering requirements and solutions discovery' },
-        { step: 'Design', description: 'Create technical architecture' },
+        { step: 'Analysis', description: 'Gathering requirements' },
+        { step: 'Design', description: 'Solution exploration and architectural design' },
         { step: 'Development', description: 'Iterative implementation' }
       ]
     },

@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Cybersecurity Services | GTC',
     description: 'Protect your digital assets with comprehensive security solutions and proactive threat management.',
-    url: 'https://yourdomain.com/services/cyber-security',
+    url: 'https://gtechnology.ca/services/cyber-security',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://yourdomain.com/services/cyber-security',
+    canonical: 'https://gtechnology.ca/services/cyber-security',
   },
 }
 
