@@ -15,9 +15,8 @@ export default function Hero() {
         }}
         aria-label="Hero background"
       >
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
-      <div className="relative z-10 flex items-center justify-center min-h-screen">
+        <div className="absolute inset-0 bg-black/45" />
+      </div>      <div className="relative z-10 flex items-center justify-center min-h-screen">
         <MaxWidthWrapper className="text-center text-white">
           <div className="bg-gradient-to-b from-[#FFFFFF] to-[#646DD8] bg-clip-text text-transparent">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
