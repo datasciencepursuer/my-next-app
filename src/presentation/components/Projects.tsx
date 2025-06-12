@@ -58,8 +58,9 @@ export default function Projects() {
                   style={{
                     backgroundImage: `url(${project.image})`,
                     backgroundSize: 'cover',
-                    backgroundPosition: project.adjustments?.includes('object-top') ? 'top' : 
-                                      project.adjustments?.includes('object-bottom') ? 'bottom' : 'center',
+                    backgroundPosition: project.backgroundPosition || 
+                                      (project.adjustments?.includes('object-top') ? 'top' : 
+                                       project.adjustments?.includes('object-bottom') ? 'bottom' : 'center'),
                     backgroundRepeat: 'no-repeat'
                   }}
                   aria-label={project.title}

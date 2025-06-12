@@ -7,7 +7,8 @@ export const servicesData: Service[] = [
     description: "Modernize your business with scalable cloud infrastructure and digital transformation solutions that drive innovation and growth.",
     image: "https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmTEpv4zfSCPRDuYWvyrF4cotp7a8xf0gkU2X1",
     path: "/services/cloud-solutions",
-    adjustments: "object-[center_25%]"
+    adjustments: "object-center",
+    backgroundPosition: "center 35%"
   },
   {
     id: 'custom-development',

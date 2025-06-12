@@ -6,6 +6,7 @@ export interface Service {
   image: string;
   path: string;
   adjustments?: string;
+  backgroundPosition?: string;
 }
 
 export interface ServiceStep {
@@ -27,6 +28,7 @@ export interface Project {
   image: string;
   path: string;
   adjustments?: string;
+  backgroundPosition?: string;
 }
 
 // Contact form types
