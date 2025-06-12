@@ -1,8 +1,8 @@
 'use client';
 
 import { ChevronUp } from 'lucide-react';
-import { smoothScrollTo } from '@/utils/scrollAnimation';
-import { useScrollObserver } from '@/hooks/useScrollObserver';
+import { smoothScrollTo } from '@/shared/utils/scrollAnimation';
+import { useScrollObserver } from '@/presentation/hooks/useScrollObserver';
 
 export default function ScrollToTop() {
   const { scrollY } = useScrollObserver(300);

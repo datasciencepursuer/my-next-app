@@ -1,6 +1,6 @@
 'use client';
 
-import MaxWidthWrapper from './MaxWidthWrapper';
+import MaxWidthWrapper from '@/presentation/components/layout/MaxWidthWrapper';
 
 export default function About() {
   return (

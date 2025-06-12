@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
-import Hero from '@/components/Hero';
-import Services from '@/components/Services';
-import About from '@/components/About';
-import Contact from '@/components/Contact';
-import ScrollToTop from '@/components/ScrollToTop';
+import Hero from '@/presentation/components/Hero';
+import Services from '@/presentation/components/Services';
+import About from '@/presentation/components/About';
+import Contact from '@/presentation/components/forms/Contact';
+import ScrollToTop from '@/presentation/components/ScrollToTop';
 
 export const metadata: Metadata = {
   title: 'GTC Technology Consulting | Innovative IT Solutions & Digital Transformation',

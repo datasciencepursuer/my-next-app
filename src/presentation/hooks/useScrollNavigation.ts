@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { smoothScrollTo } from '@/utils/scrollAnimation';
+import { smoothScrollTo } from '@/shared/utils/scrollAnimation';
 
 export const useScrollNavigation = () => {
   const pathname = usePathname();

@@ -1,10 +1,11 @@
 'use client';
 
-import { Project, projects, getServiceDetails } from '@/config/projectRoutes';
+import { Project } from '@/shared/types';
+import { servicesData, serviceDetailsData } from '@/infrastructure/config/services';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { useScrollNavigation } from '@/hooks/useScrollNavigation';
-import Button from './Button';
+import { useScrollNavigation } from '@/presentation/hooks/useScrollNavigation';
+import Button from '@/presentation/components/ui/Button';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -29,9 +30,9 @@ export default function Projects() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-screen-2xl mx-auto">
-      {projects.map((project) => {
+      {servicesData.map((project) => {
         const isSelected = selectedProject?.id === project.id;
-        const serviceDetails = getServiceDetails(project.id);
+        const serviceDetails = serviceDetailsData[project.id] || serviceDetailsData['cloud-solutions'];
 
         return (
           <div

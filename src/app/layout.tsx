@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import GoogleCaptchaWrapper from '@/components/GoogleCaptchaWrapper'; // Adjust path if necessary
-import StructuredData from '@/components/StructuredData';
+import Header from '@/presentation/components/layout/Header';
+import Footer from '@/presentation/components/layout/Footer';
+import GoogleCaptchaWrapper from '@/presentation/components/forms/GoogleCaptchaWrapper';
+import StructuredData from '@/presentation/components/StructuredData';
 import "./globals.css";
 
 export const metadata: Metadata = {

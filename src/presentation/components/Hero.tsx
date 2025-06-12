@@ -1,6 +1,6 @@
-import MaxWidthWrapper from './MaxWidthWrapper';
-import ScrollNavLink from './ScrollNavLink';
-import Button from './Button';
+import MaxWidthWrapper from '@/presentation/components/layout/MaxWidthWrapper';
+import ScrollNavLink from '@/presentation/components/ScrollNavLink';
+import Button from '@/presentation/components/ui/Button';
 
 export default function Hero() {
   return (

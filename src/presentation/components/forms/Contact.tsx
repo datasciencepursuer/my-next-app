@@ -1,8 +1,8 @@
 'use client'
 
-import MaxWidthWrapper from './MaxWidthWrapper';
+import MaxWidthWrapper from '@/presentation/components/layout/MaxWidthWrapper';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import ContactCard from './ContactCard';
+import ContactCard from '@/presentation/components/forms/ContactCard';
 
 export default function Contact() {
   return (

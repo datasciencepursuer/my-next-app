@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { projects } from '@/config/projectRoutes'
+import { servicesData } from '@/infrastructure/config/services'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://gtechnology.ca'
@@ -17,8 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
   
-  // Service pages from projectRoutes config
-  const servicePages = projects.map((project) => ({
+  // Service pages from services config
+  const servicePages = servicesData.map((project) => ({
     url: `${baseUrl}/services/${project.id}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,

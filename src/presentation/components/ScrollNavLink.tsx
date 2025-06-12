@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useScrollNavigation } from '@/hooks/useScrollNavigation';
+import { useScrollNavigation } from '@/presentation/hooks/useScrollNavigation';
 
 interface ScrollNavLinkProps {
   href: string;

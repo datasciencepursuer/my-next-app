@@ -1,7 +1,7 @@
 'use client';
 
-import MaxWidthWrapper from './MaxWidthWrapper';
-import Projects from './Projects';
+import MaxWidthWrapper from '@/presentation/components/layout/MaxWidthWrapper';
+import Projects from '@/presentation/components/Projects';
 
 export default function Services() {
   return (

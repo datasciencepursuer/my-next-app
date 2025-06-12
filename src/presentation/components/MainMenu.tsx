@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Menu } from 'lucide-react';
-import ScrollNavLink from '@/components/ScrollNavLink';
-import { useActiveSection } from '@/hooks/useActiveSection';
+import ScrollNavLink from '@/presentation/components/ScrollNavLink';
+import { useActiveSection } from '@/presentation/hooks/useActiveSection';
 
 const menuItems = [
   { id: 'home', label: 'Overview', href: '/' },

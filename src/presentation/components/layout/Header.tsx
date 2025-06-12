@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import MainMenu from './MainMenu';
-import MaxWidthWrapper from './MaxWidthWrapper';
-import { useScrollNavigation } from '@/hooks/useScrollNavigation';
-import { useScrollObserver } from '@/hooks/useScrollObserver';
+import MainMenu from '@/presentation/components/MainMenu';
+import MaxWidthWrapper from '@/presentation/components/layout/MaxWidthWrapper';
+import { useScrollNavigation } from '@/presentation/hooks/useScrollNavigation';
+import { useScrollObserver } from '@/presentation/hooks/useScrollObserver';
 
 export default function Header() {
   const { handleSectionNavigation } = useScrollNavigation();
