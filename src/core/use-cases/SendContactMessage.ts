@@ -46,7 +46,7 @@ export class SendContactMessageUseCase {
       const emailResult = await this.emailService.sendEmail(emailMessage);
 
       return emailResult;
-    } catch (error) {
+    } catch {
       return {
         success: false,
         error: 'An unexpected error occurred',

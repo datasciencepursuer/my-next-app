@@ -1,4 +1,4 @@
-import { Service, ServiceDetails, ServiceStep } from '@/shared/types';
+import { Service, ServiceDetails } from '@/shared/types';
 
 export const servicesData: Service[] = [
   {
