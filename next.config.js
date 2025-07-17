@@ -15,10 +15,8 @@ export default {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60,
     loader: 'default',
-    quality: 75,
     unoptimized: false,
     domains: [],
     disableStaticImages: false,
-    maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
   },
 };
