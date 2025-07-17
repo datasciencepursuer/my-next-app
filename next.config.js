@@ -22,4 +22,3 @@ export default {
     maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
   },
 };
-
