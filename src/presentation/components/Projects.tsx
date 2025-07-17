@@ -4,6 +4,7 @@ import { Project } from '@/shared/types';
 import { servicesData, serviceDetailsData } from '@/infrastructure/config/services';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useScrollNavigation } from '@/presentation/hooks/useScrollNavigation';
 import Button from '@/presentation/components/ui/Button';
 
@@ -53,18 +54,18 @@ export default function Projects() {
                 onClick={() => setSelectedProject(isSelected ? null : project)}
                 className="cursor-pointer h-full"
               >
-                <div 
-                  className="w-full aspect-[160/100]"
-                  style={{
-                    backgroundImage: `url(${project.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: project.backgroundPosition || 
-                                      (project.adjustments?.includes('object-top') ? 'top' : 
-                                       project.adjustments?.includes('object-bottom') ? 'bottom' : 'center'),
-                    backgroundRepeat: 'no-repeat'
-                  }}
-                  aria-label={project.title}
-                >
+                <div className="w-full aspect-[160/100] relative overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className={`object-cover ${
+                      project.adjustments?.includes('object-top') ? 'object-top' :
+                      project.adjustments?.includes('object-bottom') ? 'object-bottom' : 'object-center'
+                    }`}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    quality={85}
+                  />
                 </div>
                 <div className="p-8 h-[200px] flex flex-col justify-between">
                   <div>

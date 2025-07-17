@@ -1,6 +1,7 @@
 'use client';
 
 import MaxWidthWrapper from '@/presentation/components/layout/MaxWidthWrapper';
+import Image from 'next/image';
 
 export default function About() {
   return (
@@ -21,16 +22,15 @@ export default function About() {
           </div>
 
           {/* Image Content - Fixed height for mobile and responsive height for larger screens */}
-          <div 
-            className="h-[350px] min-h-[350px] md:h-[600px] lg:h-[650px] w-full rounded-lg overflow-hidden shadow-lg"
-            style={{
-              backgroundImage: 'url(https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmZ7nF6LDkjNoaeX9tbkUu805VLmwGsYF3y2J1)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-            aria-label="About us"
-          >
+          <div className="h-[350px] min-h-[350px] md:h-[600px] lg:h-[650px] w-full rounded-lg overflow-hidden shadow-lg relative">
+            <Image
+              src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmZ7nF6LDkjNoaeX9tbkUu805VLmwGsYF3y2J1"
+              alt="About us"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+              quality={85}
+            />
           </div>
         </div>
       </MaxWidthWrapper>

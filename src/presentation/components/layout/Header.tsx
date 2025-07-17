@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import MainMenu from '@/presentation/components/MainMenu';
 import MaxWidthWrapper from '@/presentation/components/layout/MaxWidthWrapper';
 import { useScrollNavigation } from '@/presentation/hooks/useScrollNavigation';
@@ -21,18 +22,23 @@ export default function Header() {
             <Link 
               href="/"
               onClick={(e) => handleSectionNavigation(e, '/')}
-              className="block w-[180px] h-[60px] transition-transform hover:scale-105"
+              className="block w-[180px] h-[60px] transition-transform hover:scale-105 relative"
               style={{ 
                 WebkitUserSelect: 'none', 
                 msUserSelect: 'none', 
-                userSelect: 'none',
-                backgroundImage: 'url(https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmIdEfDAlZ7vKmQRMkr3lHeyLDOGX1njxAzVW2)',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'left center',
-                backgroundSize: 'contain'
+                userSelect: 'none'
               }}
               aria-label="GTC Logo"
             >
+              <Image
+                src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmIdEfDAlZ7vKmQRMkr3lHeyLDOGX1njxAzVW2"
+                alt="GTC Logo"
+                fill
+                className="object-contain object-left"
+                sizes="180px"
+                quality={90}
+                priority
+              />
             </Link>
           </div>
 
