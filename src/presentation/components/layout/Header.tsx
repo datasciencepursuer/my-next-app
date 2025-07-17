@@ -38,6 +38,13 @@ export default function Header() {
                 sizes="180px"
                 quality={90}
                 priority
+                draggable={false}
+                unselectable="on"
+                onContextMenu={(e) => e.preventDefault()}
+                style={{
+                  pointerEvents: 'none',
+                  userSelect: 'none'
+                }}
               />
             </Link>
           </div>

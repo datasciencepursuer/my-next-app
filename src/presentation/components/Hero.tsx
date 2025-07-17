@@ -15,6 +15,13 @@ export default function Hero() {
           priority
           sizes="100vw"
           quality={85}
+          draggable={false}
+          unselectable="on"
+          onContextMenu={(e) => e.preventDefault()}
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
         />
         <div className="absolute inset-0 bg-black/45" />
       </div>      <div className="relative z-10 flex items-center justify-center min-h-screen">

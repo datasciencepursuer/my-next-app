@@ -30,6 +30,13 @@ export default function About() {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
               quality={85}
+              draggable={false}
+              unselectable="on"
+              onContextMenu={(e) => e.preventDefault()}
+              style={{
+                pointerEvents: 'none',
+                userSelect: 'none'
+              }}
             />
           </div>
         </div>

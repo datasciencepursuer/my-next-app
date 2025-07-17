@@ -65,6 +65,13 @@ export default function Projects() {
                     }`}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     quality={85}
+                    draggable={false}
+                    unselectable="on"
+                    onContextMenu={(e) => e.preventDefault()}
+                    style={{
+                      pointerEvents: 'none',
+                      userSelect: 'none'
+                    }}
                   />
                 </div>
                 <div className="p-8 h-[200px] flex flex-col justify-between">
