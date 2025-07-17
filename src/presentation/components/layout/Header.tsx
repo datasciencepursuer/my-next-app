@@ -34,17 +34,12 @@ export default function Header() {
                 src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmIdEfDAlZ7vKmQRMkr3lHeyLDOGX1njxAzVW2"
                 alt="GTC Logo"
                 fill
-                className="object-contain object-left"
+                className="object-contain object-left select-none pointer-events-none"
                 sizes="180px"
                 quality={90}
                 priority
                 draggable={false}
                 unselectable="on"
-                onContextMenu={(e) => e.preventDefault()}
-                style={{
-                  pointerEvents: 'none',
-                  userSelect: 'none'
-                }}
               />
             </Link>
           </div>

@@ -11,17 +11,12 @@ export default function Hero() {
           src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmXQ7Ln51Ol0SVZyrj5JsoTuE2GBDW1kHNF9gc"
           alt="Hero background"
           fill
-          className="object-cover"
+          className="object-cover select-none pointer-events-none"
           priority
           sizes="100vw"
           quality={85}
           draggable={false}
           unselectable="on"
-          onContextMenu={(e) => e.preventDefault()}
-          style={{
-            pointerEvents: 'none',
-            userSelect: 'none'
-          }}
         />
         <div className="absolute inset-0 bg-black/45" />
       </div>      <div className="relative z-10 flex items-center justify-center min-h-screen">

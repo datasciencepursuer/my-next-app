@@ -27,16 +27,11 @@ export default function About() {
               src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmZ7nF6LDkjNoaeX9tbkUu805VLmwGsYF3y2J1"
               alt="About us"
               fill
-              className="object-cover"
+              className="object-cover select-none pointer-events-none"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
               quality={85}
               draggable={false}
               unselectable="on"
-              onContextMenu={(e) => e.preventDefault()}
-              style={{
-                pointerEvents: 'none',
-                userSelect: 'none'
-              }}
             />
           </div>
         </div>
