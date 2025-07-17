@@ -26,13 +26,12 @@ export async function POST(req: NextRequest) {
       rateLimitData.count = 0;
     }
 
-    rateLimitData.count++;
-    rateLimitData.lastRequest = now;
-
-    if (rateLimitData.count > MAX_REQUESTS) {
+    if (rateLimitData.count >= MAX_REQUESTS) {
       return NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
     }
 
+    rateLimitData.count++;
+    rateLimitData.lastRequest = now;
     rateLimitMap.set(ip, rateLimitData);
 
     const body = await req.json();
