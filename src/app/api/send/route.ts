@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     const ip = req.headers.get('x-forwarded-for') || 'unknown';
     const now = Date.now();
 
-    // Rate limiting
+    // Rate limiting check
     const rateLimitData = rateLimitMap.get(ip) || { count: 0, lastRequest: now };
     if (now - rateLimitData.lastRequest > RATE_LIMIT_WINDOW) {
       rateLimitData.count = 0;
@@ -29,10 +29,6 @@ export async function POST(req: NextRequest) {
     if (rateLimitData.count >= MAX_REQUESTS) {
       return NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
     }
-
-    rateLimitData.count++;
-    rateLimitData.lastRequest = now;
-    rateLimitMap.set(ip, rateLimitData);
 
     const body = await req.json();
     const { firstName, lastName, industry, email, message, middleName, recaptchaToken } = body;
@@ -57,6 +53,11 @@ export async function POST(req: NextRequest) {
     const result = await sendContactMessageUseCase.execute(contactData);
 
     if (result.success) {
+      // Only count successful submissions towards rate limit
+      rateLimitData.count++;
+      rateLimitData.lastRequest = now;
+      rateLimitMap.set(ip, rateLimitData);
+      
       return NextResponse.json({ message: 'Email sent successfully!' }, { status: 200 });
     } else {
       return NextResponse.json({ message: result.error || 'Error sending email.' }, { status: 400 });

@@ -43,7 +43,7 @@ export class ContactEntity {
   toEmailMessage(recipient: string): EmailMessage {
     return {
       to: recipient,
-      from: 'GTC Technology <leads@gtechnology.ca>',
+      from: 'GTC Technology <noreply@gtechnology.ca>',
       subject: `New Contact Form Submission from ${this.name}`,
       html: `
         <h1>New Contact Form Submission</h1>
