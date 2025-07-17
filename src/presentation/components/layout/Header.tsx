@@ -1,3 +1,5 @@
+//header of the page
+
 'use client';
 
 import Link from 'next/link';
