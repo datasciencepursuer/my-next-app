@@ -9,7 +9,7 @@ Allow: /
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://gtechnology.ca/sitemap.xml
 
 # Crawl delay (optional - uncomment if needed)
 # Crawl-delay: 1
