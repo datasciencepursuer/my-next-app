@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     ]
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "qqBaC_NIcm-4vEf31_3KjF1JQpWI7JhrghQBxYNuxHE",
     yandex: "your-yandex-verification-code",
     yahoo: "your-yahoo-verification-code",
   },
@@ -88,6 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="qqBaC_NIcm-4vEf31_3KjF1JQpWI7JhrghQBxYNuxHE" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#2563eb" />
         <meta name="color-scheme" content="light" />
