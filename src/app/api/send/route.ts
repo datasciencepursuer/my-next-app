@@ -15,8 +15,46 @@ const rateLimitMap = new Map<string, { count: number; lastRequest: number }>();
 const RATE_LIMIT_WINDOW = 8 * 60 * 60 * 1000; // 8 hours
 const MAX_REQUESTS = 2;
 
+// Allowed origins for form submissions
+const ALLOWED_ORIGINS = [
+  'https://gtechnology.ca',
+  'http://localhost:3000',
+  'http://localhost:3001',
+  process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:3000' : null
+].filter(Boolean) as string[];
+
+// Helper function to add CORS headers
+function addCorsHeaders(response: NextResponse, origin: string | null) {
+  if (origin && ALLOWED_ORIGINS.includes(origin)) {
+    response.headers.set('Access-Control-Allow-Origin', origin);
+  }
+  response.headers.set('Access-Control-Allow-Methods', 'POST');
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+  response.headers.set('Access-Control-Max-Age', '86400');
+}
+
 export async function POST(req: NextRequest) {
   try {
+    // Origin validation - block requests from unauthorized domains
+    const origin = req.headers.get('origin');
+    const referer = req.headers.get('referer');
+    
+    // Check if request has valid origin
+    if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`Blocked request from unauthorized origin: ${origin}`);
+      }
+      return NextResponse.json({ message: 'Unauthorized origin' }, { status: 403 });
+    }
+    
+    // Additional referer check for extra security
+    if (referer && !ALLOWED_ORIGINS.some(allowedOrigin => referer.startsWith(allowedOrigin))) {
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`Blocked request with invalid referer: ${referer}`);
+      }
+      return NextResponse.json({ message: 'Invalid referer' }, { status: 403 });
+    }
+
     const ip = req.headers.get('x-forwarded-for') || 'unknown';
     const now = Date.now();
 
@@ -27,7 +65,9 @@ export async function POST(req: NextRequest) {
     }
 
     if (rateLimitData.count >= MAX_REQUESTS) {
-      return NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
+      const response = NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
+      addCorsHeaders(response, origin);
+      return response;
     }
 
     const body = await req.json();
@@ -38,7 +78,9 @@ export async function POST(req: NextRequest) {
       if (process.env.NODE_ENV === 'development') {
         console.warn('Honeypot triggered. Potential spam detected.');
       }
-      return NextResponse.json({ message: 'Form submitted successfully.' }, { status: 200 });
+      const response = NextResponse.json({ message: 'Form submitted successfully.' }, { status: 200 });
+      addCorsHeaders(response, origin);
+      return response;
     }
 
     // Transform to clean architecture format
@@ -58,9 +100,13 @@ export async function POST(req: NextRequest) {
       rateLimitData.lastRequest = now;
       rateLimitMap.set(ip, rateLimitData);
       
-      return NextResponse.json({ message: 'Email sent successfully!' }, { status: 200 });
+      const response = NextResponse.json({ message: 'Email sent successfully!' }, { status: 200 });
+      addCorsHeaders(response, origin);
+      return response;
     } else {
-      return NextResponse.json({ message: result.error || 'Error sending email.' }, { status: 400 });
+      const response = NextResponse.json({ message: result.error || 'Error sending email.' }, { status: 400 });
+      addCorsHeaders(response, origin);
+      return response;
     }
   } catch (error: unknown) {
     if (process.env.NODE_ENV === 'development') {
@@ -72,9 +118,13 @@ export async function POST(req: NextRequest) {
     }
 
     if (error instanceof SyntaxError && error.message.includes('JSON')) {
-      return NextResponse.json({ message: 'Invalid JSON payload.' }, { status: 400 });
+      const response = NextResponse.json({ message: 'Invalid JSON payload.' }, { status: 400 });
+      addCorsHeaders(response, req.headers.get('origin'));
+      return response;
     }
 
-    return NextResponse.json({ message: 'Internal Server Error.' }, { status: 500 });
+    const response = NextResponse.json({ message: 'Internal Server Error.' }, { status: 500 });
+    addCorsHeaders(response, req.headers.get('origin'));
+    return response;
   }
 }

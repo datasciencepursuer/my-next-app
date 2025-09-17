@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen -mt-18">
+    <section className="relative min-h-screen">
       <div className="absolute inset-0 z-0">
         <Image
           src="https://o6so15s6oe.ufs.sh/f/IF7FvZlZ7vKmXQ7Ln51Ol0SVZyrj5JsoTuE2GBDW1kHNF9gc"
@@ -28,13 +28,21 @@ export default function Hero() {
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
               Transforming businesses through cutting-edge technology and expert consulting
             </p>
-            <div className="mb-8">
+            <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button>
               <ScrollNavLink
                 href="/#services"
                 className="inline-block text-white px-8 py-3 rounded-lg text-lg font-medium transition-all hover:scale-105"
               >
                 Explore Our Services
+              </ScrollNavLink>
+              </Button>
+              <Button className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:border-white/40 shadow-lg">
+              <ScrollNavLink
+                href="/#contact"
+                className="inline-block text-white px-8 py-3 rounded-lg text-lg font-medium transition-all hover:scale-105"
+              >
+                Contact Us
               </ScrollNavLink>
               </Button>
             </div>

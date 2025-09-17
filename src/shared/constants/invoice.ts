@@ -1,0 +1,1 @@
+export const DEFAULT_INVOICE_NOTES = 'Payment is due within 30 days of invoice date. Late payments may incur additional fees. Please reference the invoice number when making payment. No HST charged — not registered for HST. Thank you for choosing Gao Technology Consulting Inc. for your technology needs.';

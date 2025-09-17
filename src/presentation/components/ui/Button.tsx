@@ -4,12 +4,13 @@ import Link from 'next/link';
 
 interface ButtonProps {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: ((e: React.MouseEvent) => void | Promise<void>) | ((e: React.FormEvent) => void | Promise<void>) | (() => void | Promise<void>);
   href?: string;
   className?: string;
+  disabled?: boolean;
 }
 
-export default function Button({ children, onClick, href, className = '' }: ButtonProps) {
+export default function Button({ children, onClick, href, className = '', disabled = false }: ButtonProps) {
   const baseStyle = 'px-4 py-2 rounded-lg bg-[#646DD8] text-gray-200 hover:bg-[#5158B0] hover:scale-105 active:scale-95 transition-all duration-200 transform';
   const finalClassName = `${baseStyle} ${className}`.trim();
 
@@ -25,7 +26,7 @@ export default function Button({ children, onClick, href, className = '' }: Butt
   }
 
   return (
-    <button onClick={onClick} className={finalClassName}>
+    <button onClick={onClick as React.MouseEventHandler<HTMLButtonElement>} disabled={disabled} className={finalClassName}>
       {children}
     </button>
   );

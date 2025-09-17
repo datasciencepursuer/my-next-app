@@ -103,7 +103,7 @@ export default function RootLayout({
         style={{ fontFamily: 'Calibri, sans-serif' }}
       >
         <Header />
-        <main className="pt-16 flex-grow">
+        <main className="flex-grow">
           <GoogleCaptchaWrapper>
             {children}
           </GoogleCaptchaWrapper>

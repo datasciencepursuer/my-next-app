@@ -4,6 +4,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import MainMenu from '@/presentation/components/MainMenu';
 import MaxWidthWrapper from '@/presentation/components/layout/MaxWidthWrapper';
 import { useScrollNavigation } from '@/presentation/hooks/useScrollNavigation';
@@ -12,10 +13,27 @@ import { useScrollObserver } from '@/presentation/hooks/useScrollObserver';
 export default function Header() {
   const { handleSectionNavigation } = useScrollNavigation();
   const { isScrolled } = useScrollObserver(10);
+  const [isPastHero, setIsPastHero] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroHeight = window.innerHeight;
+      setIsPastHero(window.scrollY > heroHeight - 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'bg-gray-900/60 backdrop-blur-sm' : 'bg-transparent'
+      isPastHero
+        ? 'bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50 shadow-lg'
+        : isScrolled 
+          ? 'bg-white/10 backdrop-blur-md border-b border-white/20 shadow-lg' 
+          : 'bg-transparent border-b border-transparent'
     }`}>
       <MaxWidthWrapper>
         <div className="flex justify-between items-center h-24 px-4 sm:px-4 lg:px-4">
