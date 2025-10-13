@@ -48,13 +48,13 @@ export const metadata: Metadata = {
   },
 };
 
-// Disable caching for this page during development to prevent stale data
-export const revalidate = 0
+// Cache for 1 week (604800 seconds) - page is mostly static
+export const revalidate = 604800
 
 export default async function HomePage() {
   // Fetch services data from Sanity
-  const services = await getServices(0); // 0 = no caching during dev
-  const serviceDetails = await getServiceDetailsData(0);
+  const services = await getServices(604800); // Cache for 1 week
+  const serviceDetails = await getServiceDetailsData(604800);
 
   return (
     <div className="min-h-screen">
