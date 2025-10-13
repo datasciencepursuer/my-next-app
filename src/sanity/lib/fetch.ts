@@ -1,4 +1,4 @@
-import { client, serverClient } from './client'
+import { serverClient } from './client'
 import { servicesQuery, serviceBySlugQuery, serviceSlugsQuery } from './queries'
 import { Service, ServiceDetails } from '@/shared/types'
 import { urlFor } from './image'
@@ -8,7 +8,7 @@ export interface SanityService {
   title: string
   slug: string
   description: string
-  image?: any
+  image?: unknown
   imageUrl?: string
   adjustments?: string
   backgroundPosition?: string

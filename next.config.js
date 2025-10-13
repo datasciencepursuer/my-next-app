@@ -19,13 +19,15 @@ export default {
     domains: [],
     disableStaticImages: false,
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
     // Fix for "Cannot read properties of null (reading 'useContext')" error
     // Ensures only one copy of React is used
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      'react': require.resolve('react'),
-      'react-dom': require.resolve('react-dom'),
+    if (!isServer) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'react': 'react',
+        'react-dom': 'react-dom',
+      }
     }
     return config
   },

@@ -33,7 +33,7 @@ export const service = defineType({
       type: 'url',
       description: 'Recommended: Use an external image URL (e.g., from Uploadfly)',
       validation: (Rule) => Rule.custom((value, context) => {
-        const image = (context.document as any)?.image
+        const image = (context.document as Record<string, unknown>)?.image
         if (!value && !image) {
           return 'Either External Image URL or Upload Image must be provided'
         }
@@ -49,7 +49,7 @@ export const service = defineType({
       },
       description: 'Optional: Upload an image instead of using external URL',
       validation: (Rule) => Rule.custom((value, context) => {
-        const imageUrl = (context.document as any)?.imageUrl
+        const imageUrl = (context.document as Record<string, unknown>)?.imageUrl
         if (!value && !imageUrl) {
           return 'Either External Image URL or Upload Image must be provided'
         }

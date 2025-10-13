@@ -9,7 +9,9 @@
       "Bash(NEXT_PUBLIC_SANITY_DATASET=production node scripts/test-sanity.mjs)",
       "Bash(pnpm list:*)",
       "Bash(cat:*)",
-      "Bash(pnpm why:*)"
+      "Bash(pnpm why:*)",
+      "Bash(pnpm build)",
+      "Bash(pnpm rebuild:*)"
     ]
   },
   "enableAllProjectMcpServers": false
