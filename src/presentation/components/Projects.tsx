@@ -1,14 +1,18 @@
 'use client';
 
-import { Project } from '@/shared/types';
-import { servicesData, serviceDetailsData } from '@/infrastructure/config/services';
+import { Project, Service, ServiceDetails } from '@/shared/types';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useScrollNavigation } from '@/presentation/hooks/useScrollNavigation';
 import Button from '@/presentation/components/ui/Button';
 
-export default function Projects() {
+interface ProjectsProps {
+  services: Service[];
+  serviceDetails: Record<string, ServiceDetails>;
+}
+
+export default function Projects({ services, serviceDetails }: ProjectsProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const { handleSectionNavigation } = useScrollNavigation();
   const projectRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
@@ -31,9 +35,9 @@ export default function Projects() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full max-w-screen-2xl mx-auto">
-      {servicesData.map((project) => {
+      {services.map((project) => {
         const isSelected = selectedProject?.id === project.id;
-        const serviceDetails = serviceDetailsData[project.id] || serviceDetailsData['cloud-solutions'];
+        const details = serviceDetails[project.id] || serviceDetails['cloud-solutions'];
 
         return (
           <div
@@ -59,10 +63,10 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className={`object-cover select-none pointer-events-none ${
-                      project.adjustments?.includes('object-top') ? 'object-top' :
-                      project.adjustments?.includes('object-bottom') ? 'object-bottom' : 'object-center'
-                    }`}
+                    className="object-cover select-none pointer-events-none"
+                    style={{
+                      objectPosition: project.backgroundPosition || 'center'
+                    }}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     quality={85}
                     draggable={false}
@@ -108,7 +112,7 @@ export default function Projects() {
                   <div>
                     <h4 className="text-lg font-semibold mb-3 text-gray-800">Technologies</h4>
                     <div className="flex flex-wrap gap-2">
-                      {serviceDetails.technologies.map((tech, index) => (
+                      {details.technologies.map((tech, index) => (
                         <span key={index} className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm">
                           {tech}
                         </span>
@@ -119,7 +123,7 @@ export default function Projects() {
                   <div>
                     <h4 className="text-lg font-semibold mb-3 text-gray-800">Products</h4>
                     <div className="flex flex-wrap gap-2">
-                      {serviceDetails.products.map((method, index) => (
+                      {details.products.map((method, index) => (
                         <span key={index} className="bg-green-50 text-green-600 px-3 py-1 rounded-full text-sm">
                           {method}
                         </span>
@@ -130,7 +134,7 @@ export default function Projects() {
                   <div className="bg-gray-50 rounded-lg p-6">
                     <h4 className="text-lg font-semibold mb-4 text-gray-800">Implementation Process</h4>
                     <div className="space-y-4">
-                      {serviceDetails.process.map((step, index) => (
+                      {details.process.map((step, index) => (
                         <div key={index} className="flex items-start">
                           <div className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold">
                             {index + 1}

@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Header from '@/presentation/components/layout/Header';
-import Footer from '@/presentation/components/layout/Footer';
-import GoogleCaptchaWrapper from '@/presentation/components/forms/GoogleCaptchaWrapper';
+import ConditionalLayout from '@/presentation/components/layout/ConditionalLayout';
 import StructuredData from '@/presentation/components/StructuredData';
 import "./globals.css";
 
@@ -102,13 +100,9 @@ export default function RootLayout({
         className={`antialiased min-h-screen flex flex-col max-w-[100vw] sm:max-w-none overflow-x-hidden sm:overflow-x-visible`}
         style={{ fontFamily: 'Calibri, sans-serif' }}
       >
-        <Header />
-        <main className="flex-grow">
-          <GoogleCaptchaWrapper>
-            {children}
-          </GoogleCaptchaWrapper>
-        </main>
-        <Footer />
+        <ConditionalLayout>
+          {children}
+        </ConditionalLayout>
       </body>
     </html>
   );

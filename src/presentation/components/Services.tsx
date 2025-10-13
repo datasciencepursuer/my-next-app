@@ -2,8 +2,14 @@
 
 import MaxWidthWrapper from '@/presentation/components/layout/MaxWidthWrapper';
 import Projects from '@/presentation/components/Projects';
+import { Service, ServiceDetails } from '@/shared/types';
 
-export default function Services() {
+interface ServicesProps {
+  services: Service[];
+  serviceDetails: Record<string, ServiceDetails>;
+}
+
+export default function Services({ services, serviceDetails }: ServicesProps) {
   return (
     <section id="services" className="bg-gray-50 py-12 md:py-32">
       <MaxWidthWrapper>
@@ -13,7 +19,7 @@ export default function Services() {
             Explore our comprehensive range of IT solutions designed to transform your business and drive innovation.
           </p>
         </div>
-        <Projects />
+        <Projects services={services} serviceDetails={serviceDetails} />
       </MaxWidthWrapper>
     </section>
   );

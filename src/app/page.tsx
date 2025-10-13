@@ -4,6 +4,7 @@ import Services from '@/presentation/components/Services';
 import About from '@/presentation/components/About';
 import Contact from '@/presentation/components/forms/Contact';
 import ScrollToTop from '@/presentation/components/ScrollToTop';
+import { getServices, getServiceDetailsData } from '@/sanity/lib/fetch';
 
 export const metadata: Metadata = {
   title: 'GTC Technology Consulting | Innovative IT Solutions & Digital Transformation',
@@ -47,11 +48,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+// Disable caching for this page during development to prevent stale data
+export const revalidate = 0
+
+export default async function HomePage() {
+  // Fetch services data from Sanity
+  const services = await getServices(0); // 0 = no caching during dev
+  const serviceDetails = await getServiceDetailsData(0);
+
   return (
     <div className="min-h-screen">
       <Hero />
-      <Services />
+      <Services services={services} serviceDetails={serviceDetails} />
       <About />
       <Contact />
       <ScrollToTop />
