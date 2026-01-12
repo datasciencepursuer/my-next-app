@@ -253,9 +253,10 @@ export default function InvoicesPage() {
                       className="w-20 bg-white/20 backdrop-blur-sm border border-white/30 rounded-md px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 text-center"
                       value={formData.invoiceSequence}
                       onChange={(e) => {
-                        const sequence = e.target.value.replace(/[^0-9]/g, '').padStart(3, '0').slice(0, 3);
-                        setFormData(prev => ({ 
-                          ...prev, 
+                        const digitsOnly = e.target.value.replace(/[^0-9]/g, '');
+                        const sequence = digitsOnly.slice(-3).padStart(3, '0');
+                        setFormData(prev => ({
+                          ...prev,
                           invoiceSequence: sequence,
                           invoiceNumber: generateFullInvoiceNumber(prev.invoiceDate, sequence)
                         }));
