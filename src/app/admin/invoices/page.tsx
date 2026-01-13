@@ -30,6 +30,9 @@ export default function InvoicesPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
+  const [invoiceDateDisplay, setInvoiceDateDisplay] = useState('');
+  const [dueDateDisplay, setDueDateDisplay] = useState('');
+  const [rateDisplayValues, setRateDisplayValues] = useState<Record<string, string>>({});
   const router = useRouter();
   
   // Generate date prefix for invoice number in format YYYYMMDD
@@ -39,6 +42,32 @@ export default function InvoicesPage() {
     const month = String(targetDate.getMonth() + 1).padStart(2, '0');
     const day = String(targetDate.getDate()).padStart(2, '0');
     return `${year}${month}${day}`;
+  };
+
+  // Convert YYYY-MM-DD to DD/MM/YYYY for display
+  const formatDateForDisplay = (isoDate: string): string => {
+    if (!isoDate) return '';
+    const [year, month, day] = isoDate.split('-');
+    if (!year || !month || !day) return '';
+    return `${day}/${month}/${year}`;
+  };
+
+  // Convert DD/MM/YYYY to YYYY-MM-DD for storage
+  const parseDateFromDisplay = (displayDate: string): string => {
+    const parts = displayDate.replace(/[^0-9]/g, '');
+    if (parts.length < 8) return '';
+    const day = parts.slice(0, 2);
+    const month = parts.slice(2, 4);
+    const year = parts.slice(4, 8);
+    return `${year}-${month}-${day}`;
+  };
+
+  // Format input as DD/MM/YYYY while typing
+  const formatDueDateInput = (value: string): string => {
+    const digits = value.replace(/[^0-9]/g, '').slice(0, 8);
+    if (digits.length <= 2) return digits;
+    if (digits.length <= 4) return `${digits.slice(0, 2)}/${digits.slice(2)}`;
+    return `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
   };
 
   // Generate full invoice number
@@ -81,6 +110,16 @@ export default function InvoicesPage() {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+
+  // Initialize date display values
+  useEffect(() => {
+    if (formData.invoiceDate && !invoiceDateDisplay) {
+      setInvoiceDateDisplay(formatDateForDisplay(formData.invoiceDate));
+    }
+    if (formData.dueDate && !dueDateDisplay) {
+      setDueDateDisplay(formatDateForDisplay(formData.dueDate));
+    }
+  }, [formData.invoiceDate, formData.dueDate, invoiceDateDisplay, dueDateDisplay]);
 
   const addItem = () => {
     const newItem: InvoiceItem = {
@@ -262,7 +301,6 @@ export default function InvoicesPage() {
                         }));
                       }}
                       placeholder="001"
-                      maxLength={3}
                     />
                   </div>
                   <p className="text-xs text-white/60 mt-1">Date prefix auto-updates, sequence number is editable</p>
@@ -270,26 +308,39 @@ export default function InvoicesPage() {
                 <div>
                   <label className="block text-sm font-medium text-white/80">Invoice Date</label>
                   <input
-                    type="date"
+                    type="text"
                     className="mt-1 block w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-md px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
-                    value={formData.invoiceDate}
+                    value={invoiceDateDisplay}
                     onChange={(e) => {
-                      const newDate = e.target.value;
-                      setFormData(prev => ({ 
-                        ...prev, 
-                        invoiceDate: newDate,
-                        invoiceNumber: generateFullInvoiceNumber(newDate, prev.invoiceSequence)
-                      }));
+                      const formatted = formatDueDateInput(e.target.value);
+                      setInvoiceDateDisplay(formatted);
+                      const isoDate = parseDateFromDisplay(formatted);
+                      if (isoDate) {
+                        setFormData(prev => ({
+                          ...prev,
+                          invoiceDate: isoDate,
+                          invoiceNumber: generateFullInvoiceNumber(isoDate, prev.invoiceSequence)
+                        }));
+                      }
                     }}
+                    placeholder="DD/MM/YYYY"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-white/80">Due Date</label>
                   <input
-                    type="date"
+                    type="text"
                     className="mt-1 block w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-md px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
-                    value={formData.dueDate}
-                    onChange={(e) => setFormData(prev => ({ ...prev, dueDate: e.target.value }))}
+                    value={dueDateDisplay}
+                    onChange={(e) => {
+                      const formatted = formatDueDateInput(e.target.value);
+                      setDueDateDisplay(formatted);
+                      const isoDate = parseDateFromDisplay(formatted);
+                      if (isoDate) {
+                        setFormData(prev => ({ ...prev, dueDate: isoDate }));
+                      }
+                    }}
+                    placeholder="DD/MM/YYYY"
                   />
                 </div>
               </div>
@@ -350,11 +401,10 @@ export default function InvoicesPage() {
                       </td>
                       <td className="px-6 py-4">
                         <input
-                          type="number"
-                          min="0"
-                          step="0.01"
+                          type="text"
+                          inputMode="decimal"
                           className="w-24 bg-white/20 backdrop-blur-sm border border-white/30 rounded px-3 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50"
-                          value={item.rate}
+                          value={rateDisplayValues[item.id] ?? item.rate}
                           onFocus={(e) => {
                             if (item.rate === 0) {
                               e.target.select();
@@ -362,11 +412,25 @@ export default function InvoicesPage() {
                           }}
                           onChange={(e) => {
                             const value = e.target.value;
-                            if (value === '') {
-                              updateItem(item.id, 'rate', 0);
-                            } else {
-                              updateItem(item.id, 'rate', parseFloat(value) || 0);
+                            // Only allow numbers with up to 2 decimal places (including leading decimal)
+                            const regex = /^\d*\.?\d{0,2}$/;
+                            if (value === '' || regex.test(value)) {
+                              setRateDisplayValues(prev => ({ ...prev, [item.id]: value }));
+                              const numValue = parseFloat(value);
+                              if (!isNaN(numValue)) {
+                                updateItem(item.id, 'rate', numValue);
+                              } else if (value === '') {
+                                updateItem(item.id, 'rate', 0);
+                              }
                             }
+                          }}
+                          onBlur={() => {
+                            // On blur, sync display with actual value
+                            setRateDisplayValues(prev => {
+                              const newValues = { ...prev };
+                              delete newValues[item.id];
+                              return newValues;
+                            });
                           }}
                         />
                       </td>
