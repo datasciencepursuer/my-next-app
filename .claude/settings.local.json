@@ -11,7 +11,10 @@
       "Bash(cat:*)",
       "Bash(pnpm why:*)",
       "Bash(pnpm build)",
-      "Bash(pnpm rebuild:*)"
+      "Bash(pnpm rebuild:*)",
+      "Bash(pnpm audit:*)",
+      "Bash(pnpm view:*)",
+      "Bash(yes)"
     ]
   },
   "enableAllProjectMcpServers": false
