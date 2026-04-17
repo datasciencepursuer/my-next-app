@@ -14,7 +14,20 @@
       "Bash(pnpm rebuild:*)",
       "Bash(pnpm audit:*)",
       "Bash(pnpm view:*)",
-      "Bash(yes)"
+      "Bash(yes)",
+      "Bash(grep -ri \"gemini\\\\|map.*editor\\\\|dungeon\\\\|tile\" /mnt/d/product/my-next-app/src /mnt/d/product/my-next-app/scripts /mnt/d/product/my-next-app/*.md /mnt/d/product/my-next-app/*.ts)",
+      "Bash(git log:*)",
+      "Bash(while read:*)",
+      "Bash(do git:*)",
+      "Bash(done)",
+      "Bash(git ls-tree:*)",
+      "Bash(git -C /mnt/d/product/my-next-app ls-files)",
+      "Bash(git -C /mnt/d/product/my-next-app fetch origin master)",
+      "Bash(git -C /mnt/d/product/my-next-app rev-list --left-right --count origin/master...HEAD)",
+      "Bash(git -C /mnt/d/product/my-next-app log origin/master..HEAD --oneline)",
+      "Bash(git -C /mnt/d/product/my-next-app ls-tree -r origin/master --name-only)",
+      "Bash(npm view *)",
+      "Bash(git *)"
     ]
   },
   "enableAllProjectMcpServers": false
